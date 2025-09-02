@@ -11,7 +11,7 @@ type Command struct {
 	Group   string
 	Name    string
 
-	Implemented bool
+	ReadyToUse bool
 
 	Args         []*Argument
 	ReturnValues []*ReturnValue
@@ -30,10 +30,10 @@ func New(
 		log.Panicf("group and name must be non-empty")
 	}
 	cmd := Command{
-		Group:       group,
-		Name:        name,
-		Args:        nil,
-		Implemented: true,
+		Group:      group,
+		Name:       name,
+		Args:       nil,
+		ReadyToUse: true,
 	}
 	alreadyExists := slices.ContainsFunc(Commands, func(c *Command) bool {
 		return c.Group == cmd.Group &&
@@ -49,8 +49,8 @@ func New(
 	return &cmd
 }
 
-func (c *Command) NotImplemented() *Command {
-	c.Implemented = false
+func (c *Command) NotReady() *Command {
+	c.ReadyToUse = false
 	return c
 }
 
