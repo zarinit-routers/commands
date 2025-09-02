@@ -2,10 +2,12 @@ package commands
 
 var (
 	CommandTimezoneGet = New("timezone", "get").
+				WithDescription("Returns device's current timezone.").
 				Returns(
 			StringValue("timezone"),
 		)
 	CommandTimezoneSet = New("timezone", "set").
+				WithDescription("Sets device current timezone and returns new value.").
 				Accepts(
 			StringArg("timezone").
 				WithDocsDefault("Europe/Moscow").

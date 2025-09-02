@@ -10,6 +10,9 @@ func main() {
 	for _, cmd := range commands.Commands {
 
 		printHeader(cmd.String())
+
+		printDescription(cmd)
+
 		printArgs(cmd.Args)
 		printRequestExample(cmd)
 		printReturns(cmd.ReturnValues)
@@ -19,6 +22,17 @@ func main() {
 func printHeader(h string) {
 	fmt.Println("## ", h)
 	fmt.Println()
+}
+func printDescription(cmd *commands.Command) {
+	if !cmd.ReadyToUse {
+		fmt.Println("_**Not ready to use!**_")
+		fmt.Println()
+	}
+	if cmd.Description != "" {
+		fmt.Println(cmd.Description)
+		fmt.Println()
+	}
+
 }
 
 func printArgs(args []*commands.Argument) {

@@ -13,6 +13,8 @@ type Command struct {
 
 	ReadyToUse bool
 
+	Description string
+
 	Args         []*Argument
 	ReturnValues []*ReturnValue
 }
@@ -51,6 +53,10 @@ func New(
 
 func (c *Command) NotReady() *Command {
 	c.ReadyToUse = false
+	return c
+}
+func (c *Command) WithDescription(desc string) *Command {
+	c.Description = desc
 	return c
 }
 
