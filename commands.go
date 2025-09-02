@@ -11,33 +11,39 @@ func init() {
 			StringArg("timezone").
 				WithDocsDefault("Europe/Moscow").
 				WithDescription("Timezone to set to in ISO 8601 format"),
-		).Returns(
-		StringValue("timezone"),
-	)
+		).
+		Returns(
+			StringValue("timezone"),
+		)
 
 	New("ntp", "get-list").NotImplemented()
 	New("ntp", "add").NotImplemented().
-		Accepts(StringArg("server")).NotImplemented()
+		Accepts(StringArg("server")).
+		NotImplemented()
 	New("ntp", "remove").
-		Accepts(StringArg("server"))
+		Accepts(StringArg("server")).
+		NotImplemented()
 
-	New("firewall", "get-status")
-	New("firewall", "enable")
-	New("firewall", "disable")
+	New("firewall", "get-status").NotImplemented()
+	New("firewall", "enable").NotImplemented()
+	New("firewall", "disable").NotImplemented()
 
-	New("modems", "get-list")
+	New("modems", "get-list").NotImplemented()
 	New("modems", "enable").
-		Accepts(StringArg("modem"))
+		Accepts(StringArg("modem")).
+		NotImplemented()
 	New("modems", "disable").
-		Accepts(StringArg("modem"))
+		Accepts(StringArg("modem")).
+		NotImplemented()
 	New("modems", "get-signal").
-		Accepts(StringArg("modem"))
+		Accepts(StringArg("modem")).
+		NotImplemented()
 
-	New("system", "reboot")
+	New("system", "reboot").NotImplemented()
 
-	New("ssh", "get-status")
-	New("ssh", "enable")
-	New("ssh", "disable")
+	New("ssh", "get-status").NotImplemented()
+	New("ssh", "enable").NotImplemented()
+	New("ssh", "disable").NotImplemented()
 
 	New("journals", "get-journal").
 		Accepts(
@@ -45,6 +51,7 @@ func init() {
 				WithValues("system", "core", "connection", "port-forwarding"),
 			IntArg("lines").
 				WithDocsDefault(100),
-		)
+		).
+		NotImplemented()
 
 }
